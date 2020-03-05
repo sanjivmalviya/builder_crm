@@ -13,6 +13,7 @@
    $cities = 'SELECT * FROM tbl_cities_master ORDER BY name ASC';
    $cities = getRaw($cities);
 
+
    if(isset($_POST['submit'])){
 
     $next_id = 'SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = "'.DB.'" AND TABLE_NAME = "tbl_site_managers" ';

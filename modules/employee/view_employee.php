@@ -63,14 +63,14 @@ $employees = getRaw($employees);
             <!-- Start content -->
             <div class="content">
                <div class="container">
-                  <div class="row">
+                  <!-- <div class="row">
                      <div class="col-xs-12">
                         <div class="page-title-box">
                            <h4 class="page-title">Employee List</h4>
                            <div class="clearfix"></div>
                         </div>
                      </div>
-                  </div>
+                  </div> -->
                   <div class="row">
                      <div class="col-sm-12">
                         <div class="card-box">

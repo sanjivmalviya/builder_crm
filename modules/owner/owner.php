@@ -3,7 +3,8 @@
    require_once('../../functions.php');
 
    $login_id = $_SESSION['crm_credentials']['user_id'];
-   $states = getAll('tbl_state');
+   $states = getAll('tbl_states_master');
+   $cities = getAll('tbl_cities_master');
 
    $owner = getAll('tbl_owner');
 
@@ -136,7 +137,7 @@
                                               <?php if(isset($states) && count($states) > 0){ ?>
                                                 <?php foreach($states as $rs){ ?>
                                                 
-                                                  <option <?php if($old_owner_state_id == $rs['state_id']){ echo "selected"; } ?> value="<?php echo $rs['state_id']; ?>"><?php echo $rs['state_name']; ?></option>
+                                                  <option <?php if($old_owner_state_id == $rs['id']){ echo "selected"; } ?> value="<?php echo $rs['id']; ?>"><?php echo $rs['name']; ?></option>
 
                                                 <?php } ?>
                                               <?php } ?>
@@ -148,9 +149,9 @@
                                           <div class="form-group">
                                              <label for="owner_city_id">City<span class="text-danger">*</span></label>
                                             	<select class="form-control select2" name="owner_city_id" id="owner_city_id">
-                                             <?php if(isset($old_cities)){ ?>
-                                                <?php foreach($old_cities as $rs){ ?>
-                                                <option <?php if($old_owner_city_id == $rs['city_id']){ echo "selected"; } ?> value="<?php echo $rs['city_id']; ?>"><?php echo $rs['city_name']; ?></option>
+                                             <?php if(isset($cities)){ ?>
+                                                <?php foreach($cities as $rs){ ?>
+                                                <option <?php if($old_owner_city_id == $rs['id']){ echo "selected"; } ?> value="<?php echo $rs['id']; ?>"><?php echo $rs['name']; ?></option>
                                                 <?php } ?>    
                                              <?php } ?>    
                                              </select>

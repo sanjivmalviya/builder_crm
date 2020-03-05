@@ -86,15 +86,18 @@
                         <div class="card-box">
                            <div class="row">
 
-                              <a href="../../modules/employee/view_employee.php" class="btn btn-sm btn-default"><i class="fa fa-angle-left" style="font-size: 20px;"></i></a>
+                              <div class="col-md-12">
 
-                              <div class="text-right">
-                                 <label for="select_all">Select All 
-                                    <input type="checkbox" id="select_all">
-                                 </label> 
+                                 <a href="../../modules/employee/view_employee.php" class="btn btn-sm btn-default"><i class="fa fa-angle-left" style="font-size: 20px;"></i></a>
+
+                                 <div class="text-right">
+                                    <label for="select_all">Select All 
+                                       <input type="checkbox" id="select_all">
+                                    </label> 
+                                 </div>
                               </div>
 
-                              
+                              <div class="col-md-12">
                               <form method="post" style="margin-top: 20px;">
 
                            		<table class="table table-striped table-bordered table-condensed table-hover">
@@ -150,6 +153,7 @@
                                  </div>
 
                                  </form>
+                              </div>
 
                            </div>
                         </div>

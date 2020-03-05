@@ -302,7 +302,7 @@
 
   // soft delete lead
   $(document).on('click','.remove-lead', function(){
-    alert(0);
+
     var form_data = {
       delete_row : $(this).attr('data-delete-row'),
       delete_table : $(this).attr('data-delete-table'),
@@ -313,11 +313,22 @@
 
   });
 
-  // soft delete payment slab's payout
-  $(document).on('click','.remove-payment', function(){
+  // soft delete lead
+  $(document).on('click','.remove-property-floor', function(){
+    
+    var form_data = {
+      delete_row : $(this).attr('data-delete-row'),
+      delete_table : $(this).attr('data-delete-table'),
+      delete_id : $(this).attr('data-delete-id'),
+      delete_value : $(this).attr('data-delete-value')
+    };
+    
+    softDeleteRecord(form_data);
 
-    alert(0);
-    return false;
+  });
+
+  // soft delete payment slab's payout
+  $(document).on('click','.remove-property', function(){
 
     var form_data = {
       delete_row : $(this).attr('data-delete-row'),
@@ -325,9 +336,38 @@
       delete_id : $(this).attr('data-delete-id'),
       delete_value : $(this).attr('data-delete-value')
     };
-    console.log(form_data);
-    return false;
-    // softDeleteRecord(form_data);
+
+     swal({
+        title: "Are you sure?",
+        text: "Your will not be able to recover this record!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "Yes, delete it!",
+        closeOnConfirm: false
+      },
+      
+      function(){
+
+        $.ajax({
+
+          url : '../../ajax/soft_delete_properties.php',
+          type : 'POST',
+          dataType : 'json',
+          data : { form_data },
+          success : function(data){
+            // console.log(data);
+            if(data.status == '1'){
+              $('#'+form_data.delete_row+form_data.delete_value).fadeOut(800);
+              swal("Deleted!", data.msg, "success");
+            }else{
+              swal("Oops!", data.msg, "danger");
+            }
+          }
+
+        });
+
+      });
 
   });
 
@@ -336,7 +376,7 @@
   /*********************/
 
   // soft deleting a record from database
-  function softDeleteRecord(form_data){
+  function softDeleteRecord(form_data,){
     
       swal({
         title: "Are you sure?",
@@ -629,6 +669,5 @@
 
 
     });
-
   
 </script>

@@ -86,29 +86,35 @@
                         <div class="card-box">
                            <div class="row">
 
-                              <a href="../../modules/admins/view_site_managers.php" class="btn btn-sm btn-default"><i class="fa fa-angle-left" style="font-size: 20px;"></i></a>
+                              <div class="col-md-12">
+                                 
+                                 <a href="../../modules/admins/view_site_managers.php" class="btn btn-sm btn-default"><i class="fa fa-angle-left" style="font-size: 20px;"></i></a>
 
-                              <div class="text-right">
-                                 <label for="select_all">Select All 
-                                    <input type="checkbox" id="select_all">
-                                 </label> 
+                                 <div class="text-right">
+                                    <label for="select_all">Select All 
+                                       <input type="checkbox" id="select_all">
+                                    </label> 
+                                 </div>
+                                 
                               </div>
 
-                              
-                              <form method="post" style="margin-top: 20px;">
 
-                           		<table class="table table-striped table-bordered table-condensed table-hover">
-                           			
-                           			<thead>
-                           				<th>Features</th>
-                           				<th class="text-center">Access</th>
-                           			</thead>
+                              <div class="col-md-12">
+                                 
+                                 <form method="post" style="margin-top: 20px;">
 
-                           			<tbody>
-                           				
-                           				<?php if(isset($menus) && count($menus) > 0){ ?>
+                                 <table class="table table-striped table-bordered table-condensed table-hover">
+                                    
+                                    <thead>
+                                       <th>Features</th>
+                                       <th class="text-center">Access</th>
+                                    </thead>
 
-                           					<?php 
+                                    <tbody>
+                                       
+                                       <?php if(isset($menus) && count($menus) > 0){ ?>
+
+                                          <?php 
 
                                              foreach($menus as $rs){
 
@@ -117,18 +123,18 @@
 
                                           ?>
 
-                           					<tr>
-                           						<td width="90%" ><b><span class="text-primary"><?php echo ucwords($module_name)."</span> <i class='fa fa-arrow-right'></i> <span class='text-primary'>".ucwords($rs['menu_name']); ?></span></b></td>
-                           						<td width="10%" class="text-center"><input type="checkbox" class="check" <?php if(in_array($rs['menu_id'], $existing_roles)){ echo "checked"; } ?> value="<?php echo $rs['menu_id']; ?>" name="role_access[]"></td>
-                           					</tr>
+                                          <tr>
+                                             <td width="90%" ><b><span class="text-primary"><?php echo ucwords($module_name)."</span> <i class='fa fa-arrow-right'></i> <span class='text-primary'>".ucwords($rs['menu_name']); ?></span></b></td>
+                                             <td width="10%" class="text-center"><input type="checkbox" class="check" <?php if(in_array($rs['menu_id'], $existing_roles)){ echo "checked"; } ?> value="<?php echo $rs['menu_id']; ?>" name="role_access[]"></td>
+                                          </tr>
 
-                           					<?php } ?>
+                                          <?php } ?>
 
-                           				<?php } ?>
+                                       <?php } ?>
 
-                           			</tbody>
+                                    </tbody>
 
-                           		</table>
+                                 </table>
                       
                                   <div class="row">
 
@@ -150,6 +156,11 @@
                                  </div>
 
                                  </form>
+
+                              </div>
+
+                              
+                              
 
                            </div>
                         </div>

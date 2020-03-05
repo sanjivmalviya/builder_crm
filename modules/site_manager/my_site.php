@@ -128,14 +128,14 @@
             <!-- Start content -->
             <div class="content">
                <div class="container">
-                   <div class="row">
+                   <!-- <div class="row">
                      <div class="col-md-6">
                         <div class="page-title-box">
                            <h4 class="page-title">My Site Details</h4>
                            <div class="clearfix"></div>
                         </div>
                      </div>                   
-                  </div>
+                  </div> -->
                   <div class="row">   
                      
                      <div class="col-sm-12">

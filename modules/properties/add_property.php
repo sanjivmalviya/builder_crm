@@ -12,10 +12,6 @@
 
    if(isset($_POST['submit'])){
 
-        // echo "<xmp>";
-        // print_r($_POST);
-        // exit;
-
         $form_data = array(
           'site_id' => $login_id, 
           'date' => $_POST['date'], 
@@ -66,25 +62,12 @@
          $edit_data = array(
             'date' => $edit_data['date'],
             'name' => $edit_data['name'],
-            'mobile_number' => $edit_data['mobile_number'],
-            'phone' => $edit_data['phone'],
-            'occupation' => $edit_data['occupation'],
-            'company' => $edit_data['company'],
-            'street_address' => $edit_data['street_address'],
-            'city_id' => $edit_data['city_id'],
-            'state_id' => $edit_data['state_id'],
-            'country_id' => $edit_data['country_id'],
             'property_type_id' => $edit_data['property_type_id'],
-            'purpose' => $edit_data['purpose'],
-            'budget_range_from' => $edit_data['budget_range_from'],
-            'budget_range_to' => $edit_data['budget_range_to'],
-            'interested_for' => $edit_data['interested_for'],
-            'property_category_id' => $edit_data['property_category_id'],
-            'possesion_status_id' => $edit_data['possesion_status_id'],
-            'planning_within' => $edit_data['planning_within'],
-            'property_source_id' => $edit_data['property_source_id'],
-            'remark' => $edit_data['remark'],
-            'customer_recording_file' => $edit_data['customer_recording_file'],
+            'tower' => $edit_data['tower'], 
+            'no_of_floors' => $edit_data['no_of_floors'],
+            'average_price_per_unit' => $edit_data['average_price_per_unit'], 
+            'average_super_built_up_area' => $edit_data['average_super_built_up_area'], 
+            'average_carpet_area' => $edit_data['average_carpet_area']
          );
 
          // echo "<xmp>";
@@ -99,61 +82,18 @@
 
       // POST DATA
       $form_data = array(
-        'date' => $_POST['date'],
-        'name' => $_POST['name'],
-        'mobile_number' => $_POST['mobile_number'],
-        'phone' => $_POST['phone'],
-        'occupation' => $_POST['occupation'],
-        'company' => $_POST['company'],
-        'street_address' => $_POST['street_address'],
-        'city_id' => $_POST['city_id'],
-        'state_id' => $_POST['state_id'],
-        'country_id' => $_POST['country_id'],
-        'property_type_id' => $_POST['property_type_id'],
-        'purpose' => $_POST['purpose'],
-        'budget_range_from' => $_POST['budget_range_from'],
-        'budget_range_to' => $_POST['budget_range_to'],
-        'interested_for' => $_POST['interested_for'],
-        'property_category_id' => $_POST['property_category_id'],
-        'possesion_status_id' => $_POST['possesion_status_id'],
-        'planning_within' => $_POST['planning_within'],
-        'property_source_id' => $_POST['property_source_id'],
-        'remark' => $_POST['remark']
-     );
-      
-      $upload_dir = '../../uploads/customer_recordings/';
-      $extensions = array('mp3','wav');   
-      
-      $customer_recording_file = array();
+          'date' => $_POST['date'],
+          'property_type_id' => $_POST['property_type_id'],
+          'tower' => $_POST['tower'], 
+          // 'no_of_floors' => $_POST['no_of_floors'],
+          'average_price_per_unit' => $_POST['average_price_per_unit'], 
+          'average_super_built_up_area' => $_POST['average_super_built_up_area'], 
+          'average_carpet_area' => $_POST['average_carpet_area']
+       );
 
-      foreach ($_FILES['customer_recording_file']["error"] as $key => $error) {
-
-          if ($error == UPLOAD_ERR_OK) {  
-
-              $tmp_name = $_FILES['customer_recording_file']["tmp_name"][$key];
-              $file_name = $_FILES['customer_recording_file']["name"][$key];
-              $extension = explode('.',$file_name);
-              $file_extension = end($extension);
-              
-              if(in_array($file_extension, $extension)){
-                  
-                  $new_file_name = md5(uniqid()).".".$file_extension;             
-                  $destination = $upload_dir.$new_file_name;
-                  if(move_uploaded_file($tmp_name, $destination)){
-                      $customer_recording_file[] = $new_file_name;
-                  }
-              }   
-
-          }
-      }
-
-      if(count($customer_recording_file) > 0){
-        $form_data['customer_recording_file'] = $customer_recording_file[0];
-      }
-
-      if(update('tbl_properties',$field_name,$_GET['edit_id'],$form_data)){
+      if(update($table_name,$field_name,$_GET['edit_id'],$form_data)){
         
-        $success = "property Updated Successfully";
+        $success = "Property Updated Successfully";
       
       }else{
       
@@ -337,15 +277,15 @@
 
                                              <label for="no_of_floors">No. Of Floors<span class="text-danger">*</span></label>
 
-                                             <select name="no_of_floors" id="no_of_floors" class="form-control">
+                                             <select name="no_of_floors" id="no_of_floors" class="form-control" <?php if(isset($edit_data['no_of_floors'])){ echo "disabled"; } ?>>
                                                <option value="">Select Floors</option>
-                                               <option value="1">1</option>
-                                               <option value="2">2</option>
-                                               <option value="3">3</option>
-                                               <option value="4">4</option>
-                                               <option value="5">5</option>
-                                               <option value="6">6</option>
-                                               <option value="7">7</option>
+                                               <option value="1" <?php if(isset($edit_data['no_of_floors']) && $edit_data['no_of_floors'] == "1"){ echo "selected"; } ?>>1</option>
+                                               <option value="2" <?php if(isset($edit_data['no_of_floors']) && $edit_data['no_of_floors'] == "2"){ echo "selected"; } ?>>2</option>
+                                               <option value="3" <?php if(isset($edit_data['no_of_floors']) && $edit_data['no_of_floors'] == "3"){ echo "selected"; } ?>>3</option>
+                                               <option value="4" <?php if(isset($edit_data['no_of_floors']) && $edit_data['no_of_floors'] == "4"){ echo "selected"; } ?>>4</option>
+                                               <option value="5" <?php if(isset($edit_data['no_of_floors']) && $edit_data['no_of_floors'] == "5"){ echo "selected"; } ?>>5</option>
+                                               <option value="6" <?php if(isset($edit_data['no_of_floors']) && $edit_data['no_of_floors'] == "6"){ echo "selected"; } ?>>6</option>
+                                               <option value="7" <?php if(isset($edit_data['no_of_floors']) && $edit_data['no_of_floors'] == "7"){ echo "selected"; } ?>>7</option>
                                              </select>
 
                                         <!--      <input type="text" name="no_of_floors" parsley-trigger="change" required="" placeholder="" class="form-control" id="no_of_floors" value="<?php if(isset($edit_data['no_of_floors'])){ echo $edit_data['no_of_floors']; } ?>"> -->
@@ -372,7 +312,7 @@
                                         </thead>
 
                                           <tbody class="addRow">
-                                            
+
                                           </tbody>
                                       </table>
 

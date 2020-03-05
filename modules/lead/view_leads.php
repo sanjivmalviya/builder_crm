@@ -2,6 +2,9 @@
 
  require_once('../../functions.php');
 
+ require_once('../../libraries/Zebra_Pagination.php');
+ 
+
  $login_id = $_SESSION['crm_credentials']['user_id'];
  $login_type = $_SESSION['crm_credentials']['user_type'];
 
@@ -37,36 +40,33 @@
       $condition .= " AND property_category_id = '".$_POST['property_category_id']."' "; 
     }
 
-    $leads = "SELECT * FROM tbl_leads WHERE employee_id = '".$login_id."' AND delete_status = '0' ".$condition;
+    $leads = "SELECT * FROM tbl_leads WHERE employee_id = '".$login_id."' AND delete_status = '0' ".$condition." ORDER BY id DESC";
 
  }else{
 
-    $leads = "SELECT * FROM tbl_leads WHERE employee_id = '".$login_id."' AND delete_status = '0' ";
+    $leads = "SELECT * FROM tbl_leads WHERE employee_id = '".$login_id."' AND delete_status = '0' ORDER BY id DESC ";
 
  }
  
  $leads = getRaw($leads); 
+  
+ // Pagination
+ $records_per_page = 15;
+ $pagination = new Zebra_Pagination();
+ $pagination->records(count($leads));
+ $pagination->records_per_page($records_per_page);
+ // $pagination->reverse(true);
 
- if(isset($_GET['delete_id'])){
+ $leads = array_slice(
+      $leads,
+      (($pagination->get_page() - 1) * $records_per_page),
+      $records_per_page
+  );
 
-   $form_data = array(
-      'delete_status' => '1'
-   );
+ // echo "<xmp>";
+ // print_r($leads);
+ // exit;
 
-   // echo "<pre>";
-   // print_r($form_data);
-   // exit;
-
-   if(update($table_name,$field_name,$_GET['delete_id'],$form_data)){
-      
-      $success = "Record Deleted Successfully";
-      header('location:view_leads.php');
-
-   }else{
-      $error = "Failed to Delete Record";
-   }
-
- }
 
 ?>
 
@@ -80,7 +80,9 @@
             width: 100% !important;
          }
       </style>
-
+      
+      <!-- Zebra Pagination -->
+      <link rel="stylesheet" href="../../libraries/zebra_pagination/css/zebra_pagination.css" type="text/css">
 
    </head>
    <?php require_once('../../include/headerscript.php'); ?>
@@ -306,6 +308,13 @@
 
                   
                   </div>
+
+                  <hr>
+
+                  <div class="row text-right">
+                    <?php $pagination->render(); ?>
+                  </div>
+
                </div>
 
                
@@ -321,6 +330,9 @@
       <!-- START Footerscript -->
       <?php require_once('../../include/footerscript.php'); ?>
       <?php require_once('../../include/footer.php'); ?>
+
+      <!-- Zebra Pagination -->
+      <link rel="stylesheet" href="../../libraries/zebra_pagination/javascript/zebra_pagination.js" type="text/css">
 
       <script>
           $('#property_type_id,#lead_source_id,#lead_status_id,#property_category_id').select2();

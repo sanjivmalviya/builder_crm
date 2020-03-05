@@ -17,23 +17,23 @@
                         <ul>
                            <li class="menu-title" align="center">ADMINISTRATOR</li>
 
-                            <li>
-                                <a href="../../modules/owner/dashboard.php" class="waves-effect"><i class="ti-dashboard"></i><span> Dashboard </span> </a>
+                            <li class="">
+                                <a href="../../modules/owner/dashboard.php" class="waves-effect "><i class="ti-dashboard"></i><span> Dashboard </span> </a>
                             </li>
 
-                            <li>
-                                <a href="../../modules/owner/owner.php" class="waves-effect"><i class="ti-user"></i><span> Company Profile </span> </a>
+                            <li class="">
+                                <a href="../../modules/owner/owner.php" class="waves-effect "><i class="ti-user"></i><span> Company Profile </span> </a>
                             </li>
 
-                           <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="ti-layout-grid2"></i><span> Masters </span> <span class="menu-arrow"></span></a>
+                           <li class="has_sub ">
+                                <a href="javascript:void(0);" class="waves-effect "><i class="ti-layout-grid2"></i><span> Masters </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="../../modules/masters/city.php"> City </a></li>
-                                    <li><a href="../../modules/masters/state.php"> State </a></li>
-                                    <li><a href="../../modules/masters/country.php"> Country </a></li>
-                                    <li><a href="../../modules/masters/designation.php"> Designation </a></li>
+                                    <li class=""><a href="../../modules/masters/city.php" class=""> City </a></li>
+                                    <li class=""><a href="../../modules/masters/state.php" class=""> State </a></li>
+                                    <li class=""><a href="../../modules/masters/country.php" class=""> Country </a></li>
+                                    <li class=""><a href="../../modules/masters/designation.php" class=""> Designation </a></li>
                                     <li><a href="../../modules/masters/department.php"> Department </a></li>
-                                    <li><a href="../../modules/masters/expense.php"> Expense </a></li>
+                                    <!-- <li><a href="../../modules/masters/expense.php"> Expense </a></li> -->
                                     <li><a href="../../modules/masters/possesion_status.php"> Possesion Statuses </a></li>
                                     <li><a href="../../modules/masters/possesion_year.php"> Possesion Year </a></li>
                                     <li><a href="../../modules/masters/possesion_month.php"> Possesion Month </a></li>
@@ -46,8 +46,8 @@
                                     <li><a href="../../modules/masters/sub_amenity.php"> Sub Amenities </a></li>
                                     <li><a href="../../modules/masters/lead_source.php"> Lead Sources </a></li>
                                     <li><a href="../../modules/masters/lead_status.php"> Lead Statuses </a></li>
-                                    <li><a href="../../modules/masters/lead_way.php"> Lead Ways </a></li>
-                                    <li><a href="../../modules/masters/payment_terms.php"> Payment Terms </a></li>
+                                    <!-- <li><a href="../../modules/masters/lead_way.php"> Lead Ways </a></li> -->
+                                    <!-- <li><a href="../../modules/masters/payment_terms.php"> Payment Terms </a></li> -->
                                 </ul>
                             </li>
 
@@ -151,3 +151,12 @@
 
             </div>
             <!-- Left Sidebar End -->
+
+            <script>
+                
+                // alert(0);
+                $(document).on('click','.', function(){
+                  alert(0);
+                });
+
+            </script>
