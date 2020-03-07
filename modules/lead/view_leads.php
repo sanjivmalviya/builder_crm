@@ -49,9 +49,11 @@
  }
  
  $leads = getRaw($leads); 
-  
+ $leadCount = count($leads);
+
+
  // Pagination
- $records_per_page = 15;
+ $records_per_page = 30;
  $pagination = new Zebra_Pagination();
  $pagination->records(count($leads));
  $pagination->records_per_page($records_per_page);
@@ -63,9 +65,6 @@
       $records_per_page
   );
 
- // echo "<xmp>";
- // print_r($leads);
- // exit;
 
 
 ?>
@@ -221,8 +220,8 @@
 
                                  <div class="col-md-12">
                                     <div class="col-md-9">
-                                       <?php if( isset($leads) && count($leads) > 0){ ?>
-                                        <div class="text-primary"><?php echo count($leads)." Lead(s) Found"; ?></div>
+                                       <?php if( isset($leadCount) && $leadCount > 0){ ?>
+                                        <div class="text-primary"><?php echo $leadCount." Lead(s) Found"; ?></div>
                                       <?php }else{ ?>
                                         <div class="text-danger">Opps ! No Leads Found !</div>
                                       <?php } ?>
