@@ -2,15 +2,15 @@
 
   var login_id = "<?php echo $_SESSION['crm_credentials']['user_id']; ?>";
 
-    $('#bookings').DataTable( {
-        // scrollY:        '50vh',
-        // scrollCollapse: true,
-        // paging:         false
-    });
+  $('#bookings').DataTable( {
+      // scrollY:        '50vh',
+      // scrollCollapse: true,
+      // paging:         false
+  });
 
   $('.followup-nav-item:first').addClass('active');
   $('.autonumber').autoNumeric('init');
-  $('#city_id,#state_id,#country_id,#property_type_id,#property_interested_for_id,#property_category_id,#possesion_status_id,#lead_source_id,#lead_status,#property_tower').select2();
+  $('#city_id,#state_id,#country_id,#property_type_id,#property_interested_for_id,#property_category_id,#possesion_status_id,#lead_source_id,#lead_status,#property_tower,#employee_id,#visit_type').select2();
     // ,#property_tower,#property_floor
 
   $(document).on('click', '.panel-heading span.clickable', function(e){

@@ -109,6 +109,16 @@
 
                             <?php } ?>
 
+                            <li class="has_sub ">
+                                <a href="javascript:void(0);" class="waves-effect "><i class="ti-layout-grid2"></i><span> Reports </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li class=""><a href="../../modules/reports/lead_report.php" class=""> Lead Report </a></li>
+                                    <li class=""><a href="../../modules/reports/visit_report.php" class=""> Visit Report </a></li>
+                                    <li class=""><a href="../../modules/reports/booking_report.php" class=""> Booking Report </a></li>
+                                    <li class=""><a href="../../modules/reports/employee_performance_report.php" class=""> Employee Performance Report </a></li>
+                                </ul>
+                            </li>
+
                             <li class="bg-dark">
                                 <a href="../../modules/login/logout.php" class="waves-effect"><i class="mdi mdi-logout"></i><span class="text-muted"> Logout </span> </a>
                             </li>

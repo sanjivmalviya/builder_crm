@@ -121,6 +121,10 @@
                                                 $module_name = getOne('tbl_modules','module_id',$rs['module_id']);
                                                 $module_name = $module_name['module_name'];
 
+                                                if($module_name == "lead" || $module_name == "booking"){
+                                                   continue;
+                                                }
+
                                           ?>
 
                                           <tr>

@@ -77,6 +77,7 @@
                                 <thead>
                                        <th>#</th>
                                        <th class="text-center">Code</th>
+                                       <th class="text-center" width="10%">Date</th>
                                        <th class="text-center">Name</th>
                                        <th class="text-center">Tower</th>
                                        <th class="text-center">Floor</th>
@@ -101,6 +102,7 @@
                                     <tr>
                                              <td><?php echo $i++; ?></td>
                                              <td class="text-center"><a href="booking_detail.php?id=<?php echo $rs['id']; ?>"><?php echo $rs['code']; ?></a></td>
+                                             <td class="text-center"><?php echo date('d-m-Y', strtotime($rs['date'])); ?></td>
                                              <td class="text-center"><?php echo $rs['name']; ?></td>
                                              <td class="text-center"><?php echo $property_detail['tower']; ?></td>
                                              <td class="text-center"><?php echo $property_detail['floor']; ?></td>

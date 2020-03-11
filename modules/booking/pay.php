@@ -46,6 +46,7 @@
    $form_data = array(
       'payment_date' => $_POST['payment_date'],
       'payment_slab_id' => $payment_slab_id,
+      'booking_id' => $booking_id,
       'amount' => $_POST['amount'],
       'payment_type' => $_POST['payment_type'],
       'cheque_number' => $_POST['cheque_number'],

@@ -3,17 +3,30 @@
    include('../../functions.php');
 
    $login_id = $_SESSION['crm_credentials']['user_id'];
+   $login_type = $_SESSION['crm_credentials']['user_type'];
 
    $table_name = 'tbl_leads';
    $field_name = 'id';    
+
+   $employees = getRaw("SELECT * FROM tbl_employees WHERE site_manager_id = '".$login_id."' AND delete_status = '0' ORDER BY name ASC ");
 
    if(isset($_POST['submit'])){
 
     $next_id = 'SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = "'.DB.'" AND TABLE_NAME = "tbl_leads" ';
     $next_id = getRaw($next_id);
     $next_id = $next_id[0]['AUTO_INCREMENT'];
-    $code = 'LD'.sprintf('%05d',($next_id));
-    
+    // $code = 'AKSHARPV'.sprintf('%05d',($next_id));
+    $code = 'AKSHARPV'.$next_id;
+
+    if($login_type == "3"){
+
+      $employee_id = $login_id;
+
+    }else if($login_type == "2"){
+
+      $employee_id = $_POST['employee_id'];
+        
+    }
     // POST DATA
     $form_data = array(
       'code' => $code,
@@ -39,7 +52,7 @@
       'lead_source_id' => $_POST['lead_source_id'],
       'lead_status' => $_POST['lead_status'],
       'remark' => $_POST['remark'],
-      'employee_id' => $login_id
+      'employee_id' => $employee_id
     );
     
     $upload_dir = '../../uploads/customer_recordings/';
@@ -240,7 +253,7 @@
 
                <div class="container">
 
-                   <div class="row">
+     <!--               <div class="row">
 
                      <div class="col-md-6">
 
@@ -254,7 +267,7 @@
 
                      </div>                   
 
-                  </div>
+                  </div> -->
 
                   <div class="row">                       
 
@@ -269,6 +282,30 @@
                                  <div class="col-md-12">
 
                                     <div class="row">   
+
+                                      <?php if($login_type == "2" && !isset($_GET['edit_id'])){ ?>
+
+                                      <div class="col-md-3">
+
+                                          <div class="form-group">
+
+                                             <label for="name">Select Employee</label>
+
+                                             <select name="employee_id" id="employee_id" class="form-control select2">
+                                               <?php if(isset($employees)){ ?>
+                                                <?php foreach($employees as $rs){ ?>
+                                                  <option value="<?php echo $rs['id']; ?>"><?php echo $rs['name']; ?></option>
+                                                <?php } ?>
+                                              <?php } ?>
+
+                                             </select>
+
+                                          </div>
+
+                                       </div>
+
+                                       <?php } ?>
+
                                        <div class="col-md-3">
 
                                           <div class="form-group">

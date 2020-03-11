@@ -40,14 +40,31 @@
       $condition .= " AND property_category_id = '".$_POST['property_category_id']."' "; 
     }
 
-    $leads = "SELECT * FROM tbl_leads WHERE employee_id = '".$login_id."' AND delete_status = '0' ".$condition." ORDER BY id DESC";
+    // if($login_type == "2"){
+      
+    //   $leads = "SELECT * FROM tbl_leads lead INNER JOIN tbl_employees emp ON lead.employee_id = emp.id INNER JOIN tbl_site_managers smt ON smt.id = emp.site_manager_id WHERE smt.id = '".$login_id."' AND lead.delete_status = '0' ".$condition." ORDER BY lead.id DESC";
+    
+    // }else{
+
+      $leads = "SELECT * FROM tbl_leads WHERE employee_id = '".$login_id."' AND delete_status = '0' ".$condition." ORDER BY id DESC";
+
+    // }
+
 
  }else{
 
-    $leads = "SELECT * FROM tbl_leads WHERE employee_id = '".$login_id."' AND delete_status = '0' ORDER BY id DESC ";
+    // if($login_type == "2"){
+
+    //   $leads = "SELECT * FROM tbl_employees emp INNER JOIN tbl_leads lead ON lead.employee_id = emp.id INNER JOIN tbl_site_managers smt ON smt.id = emp.site_manager_id WHERE smt.id = '".$login_id."' AND lead.delete_status = '0' ORDER BY lead.id DESC";
+    
+    // }else{
+      
+      $leads = "SELECT * FROM tbl_leads WHERE employee_id = '".$login_id."' AND delete_status = '0' ORDER BY id DESC ";
+
+    // }
 
  }
- 
+
  $leads = getRaw($leads); 
  $leadCount = count($leads);
 

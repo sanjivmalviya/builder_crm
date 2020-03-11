@@ -153,7 +153,7 @@
                               <?php if(isset($site_visits)){ ?>
                                 <?php foreach($site_visits as $site_visit){ ?>
                                    <tr id="site_visit_row_<?php echo $site_visit['id']; ?>">
-                                     <td><?php echo $site_visit['visit_date']; ?></td>
+                                     <td><?php echo date('d/m/Y', strtotime($site_visit['visit_date'])); ?></td>
                                      <td><?php echo getVisitType($site_visit['visit_type']); ?></td>
                                      <td><?php echo getVisitStatus($site_visit['visit_status']); ?></td>
                                      <td><a href="javascript:;" class="remove-site-visit" data-delete-row="site_visit_row_" data-delete-table="tbl_lead_site_visit" data-delete-id="id" data-delete-value="<?php echo $site_visit['id']; ?>" ><i class="fa fa-trash text-muted" aria-hidden="true"></i></a></td>
@@ -169,7 +169,7 @@
                                   <td width="33%">
                                     <!-- <input type="date" class="form-control" style="width: "> -->
                                     <div class="input-group date" data-provide="datepicker">
-                                        <input type="text" class="form-control" id="site_visit_date">
+                                        <input type="text" class="form-control" id="site_visit_date" value="<?php echo date('m/d/Y'); ?>">
                                         <div class="input-group-addon">
                                             <span class="glyphicon glyphicon-th"></span>
                                         </div>

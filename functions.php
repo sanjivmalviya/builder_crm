@@ -1386,7 +1386,7 @@ $possesion_statuses = getRaw("SELECT * FROM tbl_possesion_statuses_master ORDER 
 $lead_sources = getRaw("SELECT * FROM tbl_lead_sources_master ORDER by id ASC");
 $lead_statuses = getRaw("SELECT * FROM tbl_lead_statuses_master ORDER by id ASC");
 $payment_terms = getRaw("SELECT * FROM tbl_payment_terms_master ORDER by id ASC");
-$property_towers = getRaw("SELECT DISTINCT(tower) FROM tbl_properties WHERE site_id = '".$loginId."'  ORDER by id ASC");
+$payment_slabs = getRaw("SELECT * FROM tbl_payment_slabs_master ORDER BY id ASC");
 
 function getCityName($id){
 
@@ -1449,7 +1449,8 @@ function getPropertyType($property_type_id){
 
    $get = getOne('tbl_lead_statuses_master','id',$lead_status);
    $get['lead_status'] = $get['name'];
-   $get['color_code'] = $get['color_code'];
+   $get['status_class'] = $get['status_class'];
+   $get['status_class_light'] = $get['status_class_light'];
 
    return $get;
 

@@ -4,7 +4,7 @@
 
 	$form_data = array(
 		'lead_id' => $_POST['form_data']['lead_id'],
-		'visit_date' => $_POST['form_data']['visit_date'],
+		'visit_date' => date('Y-m-d', strtotime($_POST['form_data']['visit_date'])),
 		'visit_type' => $_POST['form_data']['visit_type'],
 		'visit_status' => $_POST['form_data']['visit_status']
 	);

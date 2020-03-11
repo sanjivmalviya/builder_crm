@@ -23,7 +23,7 @@
  $payouts = "SELECT 
    det.payment_date as payment_date,
    det.id as id,
-   det.payment_slab_id as payment_slab_id,
+   (SELECT payment_slab_id FROM tbl_booking_payment_slabs WHERE id = det.payment_slab_id) as payment_slab_id,
    det.amount as amount,
    det.payment_type as payment_type,
    det.cheque_number as cheque_number,
@@ -100,7 +100,8 @@
                                                 ?></td>
                                                 <td>
                                                    <?php 
-                                                    $paid_slab_amount = "SELECT IFNULL(SUM(amount),0) as paid_slab_amount FROM tbl_booking_payments WHERE payment_slab_id = '".$rs['payment_slab_id']."' AND delete_status = '0' AND cheque_status = '1' ";
+
+                                                    $paid_slab_amount = "SELECT IFNULL(SUM(amount),0) as paid_slab_amount FROM tbl_booking_payments bookPay INNER JOIN tbl_booking_payment_slabs bookSlab ON bookPay.payment_slab_id = bookSlab.id WHERE bookSlab.payment_slab_id = '".$rs['payment_slab_id']."' AND delete_status = '0' AND bookSlab.booking_id = '".$booking_id."' AND cheque_status = '1' ";
                                                     $paid_slab_amount = getRaw($paid_slab_amount);
                                                     $paid_slab_amount = $paid_slab_amount[0]['paid_slab_amount'];
                                                     echo "<i class='fa fa-rupee'></i> ".number_format($paid_slab_amount,2);

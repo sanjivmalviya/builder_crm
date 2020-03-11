@@ -3,9 +3,23 @@
    include('../../functions.php');
 
    $login_id = $_SESSION['crm_credentials']['user_id'];
+   $login_type = $_SESSION['crm_credentials']['user_type'];
 
    $table_name = 'tbl_bookings';
    $field_name = 'id';    
+
+   if($login_type == "2"){
+   
+    $site_manager_id = $login_id;
+   
+   }else if($login_type == "3"){
+    
+    $site_manager_id = getOne('tbl_employees','id',$login_id);
+    $site_manager_id = $site_manager_id['site_manager_id'];
+
+   }
+
+   $property_towers = getRaw("SELECT DISTINCT(tower) FROM tbl_properties WHERE site_id = '".$site_manager_id."'  ORDER by id ASC");
 
    if(isset($_POST['submit'])){
 
@@ -28,6 +42,7 @@
         
         $form_data = array(
           'code' => $code,
+          'date' => date('Y-m-d', strtotime($_POST['date'])),
           'property_floor_id' => $property_floor_id,
           'name' => $_POST['name'],
           'age' => $_POST['age'],
@@ -185,6 +200,25 @@
                   <h3>Customer Details</h3>
                   <section>
                     <div class="row">
+                      
+                      <div class="col-md-4"> 
+
+                          <label for="date">Booking Date <span class="text-danger">*</span></label>
+
+                          <div class="input-group date" data-provide="datepicker">
+                            <input type="text" class="form-control" id="date" name="date" value="<?php if(isset($_POST['date']) && $_POST['date'] != ""){ echo $_GET['date']; }else { echo date('m/d/Y'); } ?>" required >
+                            <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                          </div>
+
+                       </div>
+                      
+                    </div>
+
+                    <div class="row">
+
+
                       <div class="col-md-4">
                         <div class="form-group">
                            <label for="property_tower">Property Tower<span class="text-danger">*</span></label>

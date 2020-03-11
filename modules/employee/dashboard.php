@@ -4,11 +4,11 @@
 
    $login_id = $_SESSION['crm_credentials']['user_id'];
 
-   $total_leads = getWhere('tbl_leads','delete_status','0');
+   $total_leads = getRaw('SELECT * FROM tbl_leads WHERE employee_id = "'.$login_id.'" AND delete_status= "0" ');
    $total_leads = count($total_leads);
 
    $action_date = date('m/d/Y');
-   $yesterday_action_date = date('m/d/Y', strtotime('-1 day', strtotime(date('Y-m-d'))));
+   $tomorrow_action_date = date('m/d/Y', strtotime('+1 day', strtotime(date('Y-m-d'))));
    $yesterday = date('Y-m-d', strtotime('-1 day', strtotime(date('Y-m-d'))));
    
    $today_leads = getRaw('SELECT COUNT(*) as today_leads FROM tbl_leads WHERE DATE(created_at) = DATE(NOW())');
@@ -24,8 +24,8 @@
    $today_followups = getRaw($today_followups);
    $today_followups_count = count($today_followups);
 
-   $yesterday_followups = getRaw('SELECT COUNT(*) as yesterday_followups FROM tbl_followups WHERE action_date != "" AND action_date = "'.$yesterday_action_date.'" AND action_status = "0" ');
-   $yesterday_followups = $yesterday_followups[0]['yesterday_followups'];
+   $tomorrow_followups = getRaw('SELECT COUNT(*) as tomorrow_followups FROM tbl_followups WHERE action_date != "" AND action_date = "'.$tomorrow_action_date.'" AND action_status = "0" ');
+   $tomorrow_followups = $tomorrow_followups[0]['tomorrow_followups'];
 
 ?>
 
@@ -67,8 +67,8 @@
                                       </div>
                                       <div class="overflow-hidden">
                                           <p class="text-uppercase font-weight-medium text-truncate mb-2">TOTAL LEADS</p>
-                                          <h2 class="mb-0"><span data-plugin="counterup"><?php echo $total_leads; ?></span> <i class="mdi mdi-arrow-up text-success font-24"></i></h2>
-                                          <p class="text-muted mt-2 m-0"><span class="font-weight-medium">Last Month:</span> 0</p>
+                                          <h2 class="mb-0"><span data-plugin="counterup"><?php echo $total_leads; ?></span> </h2>
+                                          <!-- <p class="text-muted mt-2 m-0"><span class="font-weight-medium">Last Month:</span> 0</p> -->
                                       </div>
                                   </div>
                               </div>
@@ -103,8 +103,8 @@
                                   </div>
                                   <div class="overflow-hidden">
                                       <p class="text-uppercase font-weight-medium text-truncate mb-2">TOTAL FOLLOWUPS</p>
-                                      <h2 class="mb-0"><span data-plugin="counterup"><?php echo $total_followups; ?></span> <i class="mdi mdi-arrow-up text-success font-24"></i></h2>
-                                      <p class="text-muted mt-2 m-0"><span class="font-weight-medium">Last Month:</span> 0</p>
+                                      <h2 class="mb-0"><span data-plugin="counterup"><?php echo $total_followups; ?></span> </h2>
+                                      <!-- <p class="text-muted mt-2 m-0"><span class="font-weight-medium">Last Month:</span> 0</p> -->
                                   </div>
                               </div>
                           </div>
@@ -119,13 +119,13 @@
                                   <div class="overflow-hidden">
                                       <p class="text-uppercase font-weight-medium text-truncate mb-2">TODAY FOLLOWUPS</p>
                                       <h2 class="mb-0"><span data-plugin="counterup"><?php echo $today_followups_count; ?></span> 
-                                        <?php if($today_followups_count > $yesterday_followups){ ?>
+                                        <?php if($today_followups_count > $tomorrow_followups){ ?>
                                            <i class="mdi mdi-arrow-up text-success font-24"></i>
                                         <?php }else{ ?>
                                            <i class="mdi mdi-arrow-down text-danger font-24"></i>
                                         <?php } ?>
                                      </h2>
-                                      <p class="text-muted mt-2 m-0"><span class="font-weight-medium">Yesterday:</span> <?php echo $yesterday_followups; ?></p>
+                                      <p class="text-muted mt-2 m-0"><span class="font-weight-medium">Tomorrow:</span> <?php echo $tomorrow_followups; ?></p>
                                   </div>
                               </div>
                           </div>
