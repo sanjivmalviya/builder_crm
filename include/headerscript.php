@@ -4,11 +4,9 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="description" content="">
 
-        <meta name="author" content="Coderthemes">
-
-
+        <meta name="author" content="">
 
         <!-- App favicon -->
 
@@ -16,9 +14,7 @@
 
         <!-- App title -->
 
-        <title>Admin Panel</title>
-
-
+        <title>Realty CRM</title>
 
          <!-- App css -->
         
@@ -44,7 +40,7 @@
 
         <link href="../../assets/css/responsive.css" rel="stylesheet" type="text/css" />
 
-        <link rel="stylesheet" href="../../plugins/switchery/switchery.min.css">
+        <!-- <link rel="stylesheet" href="../../plugins/switchery/switchery.min.css"> -->
 
 
 
@@ -82,9 +78,9 @@
 
         <link href="../../plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css" rel="stylesheet" />
 
-        <link href="../../plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" />
+        <!-- <link href="../../plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" /> -->
 
-        <link href="../../plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <!-- <link href="../../plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" /> -->
 
         <link href="../../plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
 
@@ -92,7 +88,7 @@
 
         
 
-        <link href="../../plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+        <!-- <link href="../../plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"> -->
 
         <link href="../../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 

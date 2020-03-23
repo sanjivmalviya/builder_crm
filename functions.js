@@ -1,14 +1,14 @@
 
 // Assigning Datatables
 
-$('#user_type').select2();
+// $('#user_type').select2();
 
-$('#products,#customers').DataTable( {
-    dom: 'Bfrtip',
-    buttons: [
-        'copy', 'csv', 'excel', 'pdf', 'print'
-    ]
-});
+// $('#products,#customers').DataTable( {
+//     dom: 'Bfrtip',
+//     buttons: [
+//         'copy', 'csv', 'excel', 'pdf', 'print'
+//     ]
+// });
 
 function randomPassword(){
 

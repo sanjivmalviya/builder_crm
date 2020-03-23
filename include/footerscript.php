@@ -69,12 +69,7 @@
 
 
         <!-- Sweet-Alert  -->
-
-        <script src="../../plugins/bootstrap-sweetalert/sweet-alert.min.js"></script>
-
-        <script src="../../assets/pages/jquery.sweet-alert.init.js"></script>
-
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
         <script src="../../plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
 
@@ -204,7 +199,7 @@
 
         <!-- custom js function file -->
 
-        <script src="../../functions.js"></script>
+        <script language="JavaScript" src="../../functions.js"></script>
 
         <!-- Select 2  -->
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script> -->

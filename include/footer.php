@@ -465,50 +465,6 @@
 
     });
 
-    $(document).on('click','.change-lead-status', function(){
-
-      var form_data = {
-        status_title : $(this).attr('data-status-title'),
-        current_status : $(this).attr('data-status'),
-        table : "tbl_leads",
-        id : $(this).attr('data-id')
-      };
-
-      swal({
-        title: "Are you sure?",
-        text: "You wont change it later !",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonClass: "btn-success",
-        confirmButtonText: "Yes, Change Status !",
-        closeOnConfirm: false
-      },
-
-      function(){
-
-        $.ajax({
-
-          url : '../../ajax/change_status.php',
-          type : 'POST',
-          dataType : 'json',
-          data : { form_data },
-          success : function(data){
-            // console.log(data);
-            // return false;
-            if(data.status == '1'){
-              // $('#'+form_data.row_title+form_data.id).fadeOut(800);
-              swal("Status Updated!", data.msg, "success");
-            }else{
-              swal("Oops!", data.msg, "danger");
-            }
-          }
-
-        });
-
-      });
-
-    });
-
     function getFloorsByTower(tower,sub_element){
 
       var form_data = {
