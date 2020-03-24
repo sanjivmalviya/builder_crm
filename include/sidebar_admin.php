@@ -53,7 +53,7 @@
 
                             <!-- ONLY FOR DEVELOPER : START -->
 
-                                <!--  <li class="has_sub">
+                  <!--                <li class="has_sub">
                                     <a href="javascript:void(0);" class="waves-effect"><i class="ti-layout-grid2"></i><span> Modules </span> <span class="menu-arrow"></span></a>
                                     <ul class="list-unstyled">
                                         <li><a href="../../modules/menus/add.php"> Add New Module </a></li>
